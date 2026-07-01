@@ -7,18 +7,12 @@ import sys
 from pathlib import Path
 
 from . import __version__
+from .app_paths import resolve_pipeline_config_path
 from .config import load_pipeline_config
 from .gnss_pipeline import default_output_base, run_gnss
 
 
-def _default_config_dir() -> Path:
-    if getattr(sys, "frozen", False):
-        return Path(sys.executable).resolve().parent / "config"
-    return Path(__file__).resolve().parents[2] / "config"
-
-
 def build_parser() -> argparse.ArgumentParser:
-    cfg = _default_config_dir()
     parser = argparse.ArgumentParser(
         prog="nar_sat_dp",
         description="批次解析 GNSS 設備 log（.txt / .zip / .7z），合併輸出 CSV + Excel。",
@@ -38,8 +32,8 @@ def build_parser() -> argparse.ArgumentParser:
         "-c",
         "--config",
         type=Path,
-        default=cfg / "pipeline.json",
-        help="pipeline 設定檔",
+        default=None,
+        help="pipeline 設定檔（預設：exe 旁 config/，否則使用內建）",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     return parser
@@ -67,14 +61,15 @@ def main(argv: list[str] | None = None) -> int:
         _pause_if_frozen()
         return 2
 
-    if not args.config.exists():
-        print(f"找不到設定檔: {args.config}", file=sys.stderr)
+    config_path = resolve_pipeline_config_path(args.config)
+    if not config_path.exists():
+        print(f"找不到設定檔: {config_path}", file=sys.stderr)
         _pause_if_frozen()
         return 2
 
     input_paths = [Path(p) for p in args.inputs]
     output = args.output if args.output is not None else default_output_base(input_paths)
-    pipeline = load_pipeline_config(args.config)
+    pipeline = load_pipeline_config(config_path)
     result = run_gnss(input_paths, output.resolve(), pipeline)
     _pause_if_frozen()
     return result.exit_code

@@ -10,7 +10,7 @@ NAR_SAT_DP — 使用說明
 
 拖放：可將檔案或資料夾拖到 nar_sat_dp.exe 上。
 
-設定檔：同目錄 config\pipeline.json（可選）。
+設定檔：同目錄 config\pipeline.json（可選；未提供時使用 exe 內建預設）。
 
 授權
 ----
