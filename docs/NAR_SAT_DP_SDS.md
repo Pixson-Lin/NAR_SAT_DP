@@ -92,8 +92,9 @@ flowchart LR
 | 階段 | 元件 | 說明 |
 |------|------|------|
 | 開發 | Python 3.10+、`pip install -e .` | 模組化開發與單元測試 |
-| 打包 | PyInstaller `--onefile` | 內嵌 `py7zr`、`openpyxl` |
-| 執行 | `nar_sat_dp.exe` | 使用者無需 Python；可拖放或 CLI |
+| 打包 | `scripts/build.ps1`（PyInstaller `--onefile`） | 內嵌 `py7zr`、`openpyxl` |
+| 發佈 | `dist/NAR_SAT_DP_<版本>.zip` | exe + LICENSE + NOTICE + `THIRD_PARTY/` + `BUILD.md` |
+| 執行 | 解壓後 `nar_sat_dp.exe` | 使用者無需 Python；可拖放或 CLI |
 
 ### 2.3 實作狀態
 
@@ -117,12 +118,18 @@ NAR_SAT_DP/
 ├── docs/
 │   ├── NAR_SAT_DP_SRS.md
 │   ├── NAR_SAT_DP_SDS.md
-│   └── DECISIONS.md
-├── references/samples/        # 正式與測試 log
+│   ├── DECISIONS.md
+│   ├── BUILD.md
+│   └── DISTRIBUTION.md
+├── packaging/
+│   ├── licenses/LGPL-2.1.txt
+│   ├── RELEASE_README.txt
+│   └── SOURCE_OFFER.txt
 ├── scripts/
 │   ├── parse_gnss_preview.py  # GNSS 預覽入口
 │   ├── create_sample_archives.py
-│   └── build.ps1
+│   ├── build.ps1
+│   └── write_release_metadata.py
 └── src/nar_sat_dp/
     ├── cli.py
     ├── pipeline.py

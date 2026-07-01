@@ -94,20 +94,28 @@ nar_sat_dp.exe <輸入路徑...> -o <輸出基底名稱> [-c pipeline.json]
 | [config/pipeline.json](config/pipeline.json) | 掃描、編碼、錯誤處理 |
 | [config/fields.json](config/fields.json) | 舊版 placeholder 規則（GNSS 解析已改為程式內建） |
 
-## 打包為 exe
+## 打包與發佈
 
 ```powershell
-pip install pyinstaller py7zr openpyxl
+pip install -r requirements-dev.txt
 .\scripts\build.ps1
 ```
 
-產出 `dist/nar_sat_dp.exe`；執行時將 `config/` 放於 exe 同目錄，或以參數指定。
+產出：
+
+| 路徑 | 說明 |
+|------|------|
+| `dist/nar_sat_dp.exe` | 單一執行檔 |
+| `dist/NAR_SAT_DP_<版本>/` | 發佈目錄（exe + 授權 + `THIRD_PARTY/` + `BUILD.md`） |
+| `dist/NAR_SAT_DP_<版本>.zip` | **建議散布給使用者**（解壓後雙擊 exe） |
+
+發佈與 LGPL 合規說明見 [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md)、建置重現見 [docs/BUILD.md](docs/BUILD.md)。
 
 ## 授權
 
 本專案原始碼以 [Apache License 2.0](LICENSE) 授權。
 
-第三方套件授權說明見 [NOTICE](NOTICE)。摘要：openpyxl（MIT）與 Apache 2.0 相容；PyInstaller 僅作建置工具；**若以 exe 內嵌 py7zr（LGPL-2.1+）發佈，須另行符合 LGPL 對該函式庫的散布義務**。
+第三方套件授權見 [NOTICE](NOTICE)。**請以 zip 發佈包**（含 `THIRD_PARTY/` 與 `BUILD.md`）散布 exe，以符合內嵌 py7zr（LGPL-2.1+）之義務。
 
 ## 結束碼
 

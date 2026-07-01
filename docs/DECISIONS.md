@@ -173,3 +173,5 @@
 |------|------|
 | 版本號 | `--version` |
 | 說明文件 | `README.md` + [DECISIONS.md](DECISIONS.md) + [NAR_SAT_DP_SRS.md](NAR_SAT_DP_SRS.md) + [NAR_SAT_DP_SDS.md](NAR_SAT_DP_SDS.md) |
+| 發佈形式 | **zip 發佈包**（exe + LICENSE + NOTICE + `THIRD_PARTY/` + `BUILD.md`），見 [DISTRIBUTION.md](DISTRIBUTION.md) |
+| 建置重現 | [BUILD.md](BUILD.md)；`scripts/build.ps1` 一鍵產出 |

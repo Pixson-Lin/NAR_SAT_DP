@@ -1,0 +1,22 @@
+py7zr — Source Code Offer (LGPL-2.1-or-later)
+=============================================
+
+This product bundles py7zr for .7z archive support.
+
+For a period of three (3) years from the date of distribution of the
+binary version of NAR_SAT_DP, you may obtain the complete corresponding
+source code for the exact version of py7zr used in this build by:
+
+  1. Downloading from PyPI: https://pypi.org/project/py7zr/#files
+  2. Cloning from GitHub:  https://github.com/miurahr/py7zr
+  3. Contacting the distributor at the project repository:
+     https://github.com/Pixson-Lin/NAR_SAT_DP/issues
+
+The specific package version used in this build is recorded in
+THIRD_PARTY/BUILD_VERSIONS.txt in this distribution.
+
+py7zr is licensed under the GNU Lesser General Public License, version 2.1
+or later. The full license text is in THIRD_PARTY/LGPL-2.1.txt.
+
+To rebuild an executable that links against a modified py7zr, see BUILD.md
+in this distribution.

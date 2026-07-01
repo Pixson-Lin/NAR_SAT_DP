@@ -52,10 +52,9 @@ Recommendations for binary distribution
 
 When shipping nar_sat_dp.exe:
 
-1. Include this NOTICE file and LICENSE (Apache 2.0) with the distribution.
-2. Include py7zr LGPL-2.1 license text if .7z support is bundled.
-3. Include openpyxl MIT copyright notice (see upstream openpyxl LICENSE).
-4. Document that py7zr source is available from https://pypi.org/project/py7zr/
+1. Distribute the release zip from `scripts/build.ps1` (not the bare exe alone).
+2. The zip includes LICENSE, NOTICE, BUILD.md, and THIRD_PARTY/ per docs/DISTRIBUTION.md.
+3. See THIRD_PARTY/py7zr-SOURCE.txt for LGPL source offer wording.
 
 This NOTICE file is provided for informational purposes and does not
 constitute legal advice.
