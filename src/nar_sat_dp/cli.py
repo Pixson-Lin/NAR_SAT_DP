@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 
 from . import __version__
-from .config import load_fields_config, load_pipeline_config
-from .pipeline import run
+from .config import load_pipeline_config
+from .gnss_pipeline import default_output_base, run_gnss
 
 
 def _default_config_dir() -> Path:
@@ -21,18 +21,18 @@ def build_parser() -> argparse.ArgumentParser:
     cfg = _default_config_dir()
     parser = argparse.ArgumentParser(
         prog="nar_sat_dp",
-        description="批次解析 .txt / .zip / .7z 並合併為 CSV。",
+        description="批次解析 GNSS 設備 log（.txt / .zip / .7z），合併輸出 CSV + Excel。",
     )
     parser.add_argument(
         "inputs",
         nargs="*",
-        help="輸入檔案或資料夾路徑（可拖放到 exe）",
+        help="輸入檔案或資料夾（可拖放到 exe）",
     )
     parser.add_argument(
         "-o",
         "--output",
         type=Path,
-        help="輸出 CSV 路徑（拖放模式預設為 merged.csv）",
+        help="輸出基底路徑（產出 .csv 與 .xlsx；預設為 merged）",
     )
     parser.add_argument(
         "-c",
@@ -41,15 +41,16 @@ def build_parser() -> argparse.ArgumentParser:
         default=cfg / "pipeline.json",
         help="pipeline 設定檔",
     )
-    parser.add_argument(
-        "-f",
-        "--fields",
-        type=Path,
-        default=cfg / "fields.json",
-        help="欄位擷取規則",
-    )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     return parser
+
+
+def _pause_if_frozen() -> None:
+    if getattr(sys, "frozen", False):
+        try:
+            input("按 Enter 結束…")
+        except EOFError:
+            pass
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -58,28 +59,25 @@ def main(argv: list[str] | None = None) -> int:
 
     if not args.inputs:
         parser.print_help()
+        print(
+            "\n用法：將 .txt、.zip、.7z 或資料夾拖放到 nar_sat_dp.exe 上，"
+            "或在命令列指定路徑。",
+            file=sys.stderr,
+        )
+        _pause_if_frozen()
         return 2
-
-    output = args.output
-    if output is None:
-        if len(args.inputs) == 1:
-            first = Path(args.inputs[0]).resolve()
-            base = first if first.is_dir() else first.parent
-        else:
-            base = Path(args.inputs[0]).resolve().parent
-        output = base / "merged.csv"
 
     if not args.config.exists():
         print(f"找不到設定檔: {args.config}", file=sys.stderr)
-        return 2
-    if not args.fields.exists():
-        print(f"找不到欄位規則: {args.fields}", file=sys.stderr)
+        _pause_if_frozen()
         return 2
 
-    pipeline = load_pipeline_config(args.config)
-    fields = load_fields_config(args.fields)
     input_paths = [Path(p) for p in args.inputs]
-    return run(input_paths, output.resolve(), pipeline, fields)
+    output = args.output if args.output is not None else default_output_base(input_paths)
+    pipeline = load_pipeline_config(args.config)
+    result = run_gnss(input_paths, output.resolve(), pipeline)
+    _pause_if_frozen()
+    return result.exit_code
 
 
 if __name__ == "__main__":

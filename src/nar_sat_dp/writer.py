@@ -30,6 +30,10 @@ class ErrorLog:
         )
         self.path.write_text(header + "\n".join(self._lines) + "\n", encoding="utf-8")
 
+    @property
+    def has_entries(self) -> bool:
+        return bool(self._lines)
+
 
 def write_csv(
     output_path: Path,

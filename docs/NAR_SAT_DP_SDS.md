@@ -103,7 +103,7 @@ flowchart LR
 | `gnss_parser.py` | **已完成** | 核心 GNSS 解析 |
 | `gnss_output.py` | **已完成** | CSV + Excel 雙輸出 |
 | `scripts/parse_gnss_preview.py` | **已完成** | 預覽/驗證腳本 |
-| `pipeline.py` + `cli.py` | **部分完成** | 舊版 `fields.json` 流程，待整合 GNSS |
+| `pipeline.py` + `cli.py` | **已完成** | GNSS 主流程、拖放、進度、結果摘要 |
 | `parser.py` + `fields.json` | **Legacy** | 初期 placeholder，非 GNSS 正式路徑 |
 
 ---

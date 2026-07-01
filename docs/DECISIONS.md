@@ -161,9 +161,9 @@
 |------|------|
 | `src/nar_sat_dp/gnss_parser.py` | GNSS log 解析 |
 | `src/nar_sat_dp/gnss_output.py` | CSV + Excel 輸出 |
-| `scripts/parse_gnss_preview.py` | 單檔/多檔預覽腳本 |
+| `scripts/parse_gnss_preview.py` | 預覽入口（委派主流程） |
 
-主批次 pipeline（`nar_sat_dp.cli`）尚待整合 GNSS 解析器與雙輸出。
+主批次流程：`cli.py` → `gnss_pipeline.run_gnss`（txt / zip / 7z、雙輸出、進度、錯誤 log）。
 
 ---
 

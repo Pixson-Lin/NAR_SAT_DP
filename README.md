@@ -20,21 +20,24 @@ python -m venv .venv
 pip install -e . -r requirements-dev.txt
 ```
 
-### 解析預覽（規則確認 / 單檔測試）
+### 解析與批次轉檔
 
 ```powershell
-.\.venv\Scripts\python scripts/parse_gnss_preview.py `
-  "references/samples/10.218.255.121_2026-06-30_17-09-01.txt" `
-  -o "references/samples/_preview_output"
+# 單一 .7z、.zip、.txt 或整個資料夾
+python -m nar_sat_dp "references/samples/tools dump VBS log.7z" -o "references/samples/_output"
+
+# 多個輸入合併
+python -m nar_sat_dp references/samples/new` 7.txt references/samples/new` 8.txt -o merged
 ```
 
-產出 `_preview_output.csv` 與 `_preview_output.xlsx`。
+未指定 `-o` 時，預設在同目錄產出 `merged.csv` / `merged.xlsx`。
 
-### 舊版通用 pipeline（placeholder 範例）
+執行時會顯示進度；結束時印出摘要。若有錯誤會寫入 `<輸出檔名>_errors.log`。
+
+亦可使用預覽腳本（行為與主程式相同）：
 
 ```powershell
-python scripts/create_sample_archives.py
-python -m nar_sat_dp samples -o samples/_actual_output.csv -c config/pipeline.json -f config/fields.json
+python scripts/parse_gnss_preview.py "references/samples/new 7.txt" -o references/samples/_preview
 ```
 
 ## 輸入 log 結構
@@ -77,15 +80,16 @@ python -m nar_sat_dp samples -o samples/_actual_output.csv -c config/pipeline.js
 | script_begin_time | 每列重複 | 同一 NE **合併** |
 | source_* | 每列重複 | 同一 NE **合併** |
 
-## 批次用法（規劃中整合至主 CLI）
+## 批次用法
 
 ```text
 nar_sat_dp.exe <輸入路徑...> -o <輸出基底名稱> [-c pipeline.json]
 ```
 
-- 可傳入多個資料夾、`.txt`、`.zip`、`.7z`
-- 資料夾遞迴掃描
-- 錯誤與警告寫入 `<輸出檔名>_errors.log`
+- 可傳入多個資料夾、`.txt`、`.zip`、`.7z`；資料夾會遞迴掃描
+- **拖放**：將檔案或資料夾拖到 `nar_sat_dp.exe` 上（預設輸出 `merged.csv` / `merged.xlsx`）
+- 同時產出 `.csv` 與 `.xlsx`；錯誤寫入 `<輸出檔名>_errors.log`
+- 結束碼：0 成功、1 有警告仍產出、2 失敗
 
 ## 設定檔
 
