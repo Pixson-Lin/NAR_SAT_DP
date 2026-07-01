@@ -1,0 +1,76 @@
+Type `help' to learn how to use Xshell prompt.
+[C:\~]$ 
+
+Connecting to 172.27.1.46:22...
+Connection established.
+To escape to local shell, press 'Ctrl+Alt+]'.
+
+
+WARNING! The remote SSH server rejected X11 forwarding request.
+A:7250IXR-R6_Up# environment no more 
+A:7250IXR-R6_Up# tools dump port a/gnss gnss 
+
+============================================
+Satellites
+============================================
+Constellation  SVPRN  Band  Signal-Strength
+                            C/No (dB-Hz)
+--------------------------------------------
+GPS            22     L1    36
+GPS            17     L1    41
+GPS            12     L1    41
+GPS            6      L1    44
+GPS            9      L1    43
+GPS            4      L1    37
+GPS            19     L1    42
+GPS            5      L1    35
+GPS            11     L1    45
+GPS            21     L1    45
+GLONASS        79     G1    38
+GLONASS        68     G1    32
+GLONASS        82     G1    38
+GLONASS        81     G1    37
+GLONASS        80     G1    37
+GLONASS        67     G1    37
+--------------------------------------------
+No. of Used Satellites: 16
+============================================
+A:7250IXR-R6_Up# tools dump port b/gnss gnss 
+
+============================================
+Satellites
+============================================
+Constellation  SVPRN  Band  Signal-Strength
+                            C/No (dB-Hz)
+--------------------------------------------
+GPS            4      L1    36
+GPS            6      L1    42
+GPS            12     L1    39
+GPS            22     L1    35
+GPS            19     L1    40
+GPS            17     L1    39
+GPS            21     L1    43
+GPS            5      L1    33
+GPS            11     L1    44
+GPS            9      L1    41
+GLONASS        80     G1    37
+GLONASS        81     G1    35
+GLONASS        68     G1    30
+GLONASS        67     G1    35
+GLONASS        79     G1    37
+GLONASS        82     G1    37
+--------------------------------------------
+No. of Used Satellites: 16
+============================================
+A:7250IXR-R6_Up# show port a/gnss | match "Angle     :"
+Ant. Cable Delay   : 392                    Elev. Mask Angle     : 15
+A:7250IXR-R6_Up# show port b/gnss | match "Angle     :"
+Ant. Cable Delay   : 392                    Elev. Mask Angle     : 15
+A:7250IXR-R6_Up# logout 
+
+Connection closed.
+
+Disconnected from remote host(172.27.1.46:22) at 09:23:39.
+
+Type `help' to learn how to use Xshell prompt.
+[C:\~]$ 

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.spec
+samples/_actual_output.csv
+samples/_actual_output_errors.log
+
+# references/samples：僅追蹤 new 7.txt、new 8.txt
+references/samples/*
+!references/samples/new 7.txt
+!references/samples/new 8.txt

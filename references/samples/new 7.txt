@@ -1,0 +1,71 @@
+[C:\~]$ 
+
+Connecting to 172.27.1.44:22...
+Connection established.
+To escape to local shell, press 'Ctrl+Alt+]'.
+
+
+WARNING! The remote SSH server rejected X11 forwarding request.
+A:7250-IXR-R6_Down# environment no more 
+A:7250-IXR-R6_Down# tools dump port a/gnss gnss 
+
+============================================
+Satellites
+============================================
+Constellation  SVPRN  Band  Signal-Strength
+                            C/No (dB-Hz)
+--------------------------------------------
+GPS            6      L1    42
+GPS            19     L1    41
+GPS            21     L1    43
+GPS            12     L1    38
+GPS            4      L1    35
+GPS            17     L1    40
+GPS            5      L1    33
+GPS            11     L1    44
+GPS            22     L1    34
+GPS            9      L1    42
+GLONASS        82     G1    39
+GLONASS        68     G1    30
+GLONASS        81     G1    36
+GLONASS        80     G1    37
+GLONASS        67     G1    35
+GLONASS        79     G1    38
+--------------------------------------------
+No. of Used Satellites: 16
+============================================
+A:7250-IXR-R6_Down# tools dump port b/gnss gnss 
+
+============================================
+Satellites
+============================================
+Constellation  SVPRN  Band  Signal-Strength
+                            C/No (dB-Hz)
+--------------------------------------------
+GPS            4      L1    35
+GPS            17     L1    40
+GPS            12     L1    38
+GPS            6      L1    41
+GPS            9      L1    41
+GPS            22     L1    34
+GPS            19     L1    41
+GPS            5      L1    33
+GPS            11     L1    44
+GPS            21     L1    43
+GLONASS        82     G1    38
+GLONASS        81     G1    34
+GLONASS        79     G1    37
+GLONASS        80     G1    35
+--------------------------------------------
+No. of Used Satellites: 14
+============================================
+A:7250-IXR-R6_Down# show port a/gnss | match "Angle     :"
+Ant. Cable Delay   : 200                    Elev. Mask Angle     : 15
+A:7250-IXR-R6_Down# show port b/gnss | match "Angle     :"
+Ant. Cable Delay   : 200                    Elev. Mask Angle     : 15
+A:7250-IXR-R6_Down# logout 
+
+Connection closed.
+
+Disconnected from remote host(172.27.1.44:22) at 09:23:33.
+

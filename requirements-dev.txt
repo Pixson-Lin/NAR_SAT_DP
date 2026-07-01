@@ -1,0 +1,4 @@
+# 開發與打包用；使用者端 exe 已內嵌，無需 pip install
+py7zr>=0.22.0
+pyinstaller>=6.0
+openpyxl>=3.1.0

@@ -1,0 +1,5 @@
+=== SAT Record (placeholder) ===
+ID: 2002
+Name: 批次乙
+Status: OK
+Note: zip 內第二筆

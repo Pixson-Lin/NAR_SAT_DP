@@ -1,0 +1,31 @@
+{
+  "fields": [
+    {
+      "name": "record_id",
+      "type": "label",
+      "label": "ID:",
+      "separator": null,
+      "ignore_case": false
+    },
+    {
+      "name": "name",
+      "type": "label",
+      "label": "Name:",
+      "separator": null,
+      "ignore_case": false
+    },
+    {
+      "name": "status",
+      "type": "label",
+      "label": "Status:",
+      "separator": null,
+      "ignore_case": false
+    },
+    {
+      "name": "optional_note",
+      "type": "regex",
+      "pattern": "Note:\\s*(.+)",
+      "ignore_case": false
+    }
+  ]
+}

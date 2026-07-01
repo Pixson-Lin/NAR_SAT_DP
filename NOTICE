@@ -1,0 +1,61 @@
+NAR_SAT_DP
+Copyright 2026 Pixson Lin
+
+This product includes software developed as part of NAR_SAT_DP
+(licensed under the Apache License, Version 2.0).
+
+================================================================================
+Third-Party Components
+================================================================================
+
+This project uses the following third-party packages. Their licenses apply
+to those components separately from the Apache License 2.0 on this project's
+own source code.
+
+Development / build-time dependencies
+-------------------------------------
+
+PyInstaller
+  License: GPL-2.0-or-later with a special exception for bundled programs
+  Usage:   Build tool only (creates the Windows executable). Not distributed
+           as part of the application source repository.
+  Note:    Using PyInstaller to build does not require this project to be GPL,
+           per PyInstaller's bundling exception.
+
+Runtime dependencies (bundled into the distributed executable)
+--------------------------------------------------------------
+
+openpyxl
+  License: MIT
+  Usage:   Excel (.xlsx) output
+  Note:    MIT is compatible with Apache 2.0. Include copyright notice when
+           redistributing binaries.
+
+py7zr
+  License: LGPL-2.1-or-later
+  Usage:   Reading .7z archives
+  Note:    LGPL allows use in applications with permissive licenses (including
+           Apache 2.0) when properly complied with. If you distribute a
+           PyInstaller one-file executable that bundles py7zr, you must meet
+           LGPL obligations for that library (e.g. allow users to replace the
+           library, provide source or written offer for py7zr source, include
+           LGPL license text). See https://www.gnu.org/licenses/lgpl-2.1.html
+
+Python standard library
+  License: PSF License
+  Usage:   Core runtime (csv, re, zipfile, etc.)
+  Note:    Compatible with Apache 2.0 for typical application distribution.
+
+================================================================================
+Recommendations for binary distribution
+================================================================================
+
+When shipping nar_sat_dp.exe:
+
+1. Include this NOTICE file and LICENSE (Apache 2.0) with the distribution.
+2. Include py7zr LGPL-2.1 license text if .7z support is bundled.
+3. Include openpyxl MIT copyright notice (see upstream openpyxl LICENSE).
+4. Document that py7zr source is available from https://pypi.org/project/py7zr/
+
+This NOTICE file is provided for informational purposes and does not
+constitute legal advice.

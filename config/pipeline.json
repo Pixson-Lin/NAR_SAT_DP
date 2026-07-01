@@ -1,0 +1,35 @@
+{
+  "txt_glob": "*.txt",
+  "archive_extensions": [".zip", ".7z"],
+  "recursive_scan": true,
+  "source_columns": {
+    "source_archive": true,
+    "source_txt_path": true
+  },
+  "row_semantics": {
+    "one_txt_one_row": true
+  },
+  "encoding": {
+    "input": "auto",
+    "input_fallback_order": ["utf-8-sig", "utf-8", "cp950"],
+    "output": "utf-8-sig"
+  },
+  "csv": {
+    "delimiter": ",",
+    "missing_field_value": "",
+    "allow_duplicate_rows": true
+  },
+  "error_handling": {
+    "continue_on_error": true,
+    "error_log_suffix": "_errors.log",
+    "progress_every_n_files": 50
+  },
+  "matching_defaults": {
+    "trim_values": true,
+    "case_sensitive_labels": true
+  },
+  "seven_zip": {
+    "enabled": true,
+    "strategy": "py7zr_bundled_in_exe"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_comment": "複製為 fields.json 並依實際 SAT 文字格式調整。欄位順序即 CSV 標題順序（追溯欄由程式自動前置）。",
+  "fields": [
+    {
+      "name": "record_id",
+      "type": "label",
+      "label": "ID:",
+      "separator": null,
+      "ignore_case": false
+    },
+    {
+      "name": "name",
+      "type": "label",
+      "label": "Name:",
+      "separator": null,
+      "ignore_case": false
+    },
+    {
+      "name": "status",
+      "type": "label",
+      "label": "Status:",
+      "separator": null,
+      "ignore_case": false
+    },
+    {
+      "name": "optional_note",
+      "type": "regex",
+      "pattern": "Note:\\s*(.+)",
+      "ignore_case": false
+    }
+  ]
+}

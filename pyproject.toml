@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nar-sat-dp"
+version = "0.1.0"
+description = "批次解析 SAT 文字檔並合併為 CSV"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+nar-sat-dp = "nar_sat_dp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

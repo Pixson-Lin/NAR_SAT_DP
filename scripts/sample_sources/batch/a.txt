@@ -1,0 +1,4 @@
+=== SAT Record (placeholder) ===
+ID: 2001
+Name: 批次甲
+Status: OK

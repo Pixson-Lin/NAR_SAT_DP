@@ -1,0 +1,5 @@
+=== SAT Record (placeholder) ===
+ID: 3001
+Name: 7z範例
+Status: OK
+Note: 7z 內範例
