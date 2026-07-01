@@ -55,6 +55,8 @@ pip freeze | Select-String "py7zr|pyinstaller|openpyxl"
 
 ## 4. PyInstaller 參數（與 build.ps1 一致）
 
+使用 `scripts/pyi_entry.py`（絕對 import，避免 frozen exe 啟動失敗）：
+
 ```text
 python -m PyInstaller ^
   --onefile ^
@@ -63,7 +65,7 @@ python -m PyInstaller ^
   --hidden-import py7zr ^
   --collect-submodules py7zr ^
   --add-data "config;config" ^
-  src/nar_sat_dp/__main__.py
+  scripts/pyi_entry.py
 ```
 
 ## 5. 驗證

@@ -27,7 +27,7 @@ Write-Host "建置 exe..."
     --hidden-import openpyxl `
     --collect-submodules openpyxl `
     --add-data "config;config" `
-    src/nar_sat_dp/__main__.py
+    scripts/pyi_entry.py
 
 $ExePath = Join-Path $Root "dist\nar_sat_dp.exe"
 if (-not (Test-Path $ExePath)) {
@@ -66,4 +66,4 @@ Write-Host "  exe:      dist\nar_sat_dp.exe"
 Write-Host "  發佈目錄: dist\$ReleaseName\"
 Write-Host "  發佈 zip: dist\$ReleaseName.zip"
 Write-Host ""
-Write-Host "使用者：解壓 zip 後雙擊 nar_sat_dp.exe 即可執行。"
+Write-Host "Unzip the release package and run nar_sat_dp.exe."
